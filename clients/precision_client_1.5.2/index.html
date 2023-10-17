@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Minecraft Resource Guide | Precision Client 1.5.2</title>
+	<title>Precision Client (1.5.2-beta_0.2)</title>
 	<meta charset="UTF-8" />
 	<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more."
 		name="description" />
@@ -15,7 +15,6 @@
 	<!--meta content="IMAGE" property="og:image"/>-->
 	<meta content="Precision Client is a custom eaglercraft client with QOL features, custom texture packs, and more."
 		property="og:description" />
-	<meta content="og:image" content="/icon-playing.png" />
 	<script type="text/javascript" src="eagswebrtc.js"></script>
 	<script type="text/javascript" src="classes.js"></script>
 	<script async src="https://arc.io/widget.min.js#pchPqjfw"></script>
@@ -64,6 +63,15 @@
 			<option>-- Choose one --</option>
 			<option value="defaultold">Default Old</option>
 			<option value="defaultnew">Default 1.17+</option>
+			<option value="bombies">Bombies 180k</option>
+			<option value="bones">Bare Bones</option>
+			<option value="modifiednew">Modified 1.17+</option>
+			<option value="miamiprivate">Miami Private</option>
+			<option value="nebula">Nebula</option>
+			<option value="rhedd">Rhedd</option>
+			<option value="ricefault">Ricefault</option>
+			<option value="tightfault">Tightfault</option>
+			<option value="walifault">Walifault</option>
 		</select>
 		<br /><br />
 		<input class="starter" type="button" value="Launch" onclick="Start();" />
@@ -81,7 +89,7 @@
 					const relayId = Math.floor(Math.random() * 3);
 					window.eaglercraftOpts = {
 						container: "game_frame",
-						assetsURI: "packs/defaultnew.epk",
+						assetsURI: `packs/${Selected}.epk`,
 						serverWorkerURI: "worker_bootstrap.js",
 						worldsFolder: "MAIN",
 						assetOverrides: {
