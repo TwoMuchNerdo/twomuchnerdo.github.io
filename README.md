@@ -1,6 +1,7 @@
  # Minecraft Resource Guide - Currently in development
 
- ![Screenshot 2023-08-30 12 07 43](https://github.com/TwoMuchNerdo/twomuchnerdo.github.io/assets/117706595/52aeae3c-1445-48ba-9b88-68925aa4cc66)
+ ![Purple MC Background](https://github.com/TwoMuchNerdo/twomuchnerdo.github.io/assets/117706595/d5e5c1dd-0472-408a-8ad4-e7a2d2319187)
+
 
 
 _
