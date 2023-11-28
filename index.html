@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="fullScreen">
 
   <head>
     <title>eagl resources</title>
@@ -24,7 +24,7 @@
   <link href="style.css" rel="stylesheet" />
 
 <body style="margin:0px;width:100vw;height:100vh;font-family:Verdana, sans-serif";>
-<div id="fullScreen" style="text-align:center";>
+<div style="text-align:center";>
 <div style="height:20vh;"></div>
 <h2 style="color:white;">eag archives</h2>
 <p>&nbsp;</p>
@@ -41,7 +41,7 @@
             class="button"
             onclick="document.getElementById('fullScreen').requestFullscreen()"
           >
-          <a id="fullScreen-button" class="dropdown-item" href="#">fullscreen</a>
+            <a id="fullScreen-button" class="dropdown-item" href="#">fullscreen</a>
           <script>
             function toggleFullScreen(id) {
               document.getElementById(id).requestFullscreen()
