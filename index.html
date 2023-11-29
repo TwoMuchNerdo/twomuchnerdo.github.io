@@ -37,17 +37,17 @@
           <div class="button-spacer" style="height:10px"></div>
           <a class="dropdown-item" href="/server_list/index.html">server list</a>
           <div class="button-spacer" style="height:120px"></div>
-          <div
-            class="button"
-            onclick="document.getElementById('fullScreen').requestFullscreen()"
-          >
-            <a id="fullScreen-button" class="dropdown-item" href="#">fullscreen</a>
-          <script>
-            function toggleFullScreen(id) {
-              document.getElementById(id).requestFullscreen()
-            }
-            </script>
-</div>
+          <a class="dropdown-item" href="#" onclick="openFullscreen();">Open Fullscreen</a>
+
+<script>
+var elem = document.documentElement;
+
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+}
+</script>
 </div>
 </div>
 </body>
