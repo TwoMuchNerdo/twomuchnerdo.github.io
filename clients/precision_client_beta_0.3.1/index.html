@@ -77,6 +77,7 @@
 		<h3>Select a version theme:</h3>
 		<select id="Theme" class="dropdown">
 			<option>-- Choose one --</option>
+			<option value="eagler">Classic Eaglercraft</option>
 			<option value="precision">precision beta_0.3.1</option>
 			<option value="indev">Indev</option>
 			<option value="alpha">Alpha</option>
@@ -184,6 +185,12 @@
 			for (Pack of PackSelect.children)
 				if (Pack.value === localStorage.LastPack) {
 					Pack.selected = "selected";
+					break;
+				}
+		if (localStorage.LastTheme)
+			for (Theme of ThemeSelect.children)
+				if (Theme.value === localStorage.LastTheme) {
+					Theme.selected = "selected";
 					break;
 				}
 	</script>
