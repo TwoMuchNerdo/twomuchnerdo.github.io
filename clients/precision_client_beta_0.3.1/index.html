@@ -74,6 +74,25 @@
 			<option value="tightfault">Tightfault</option>
 			<option value="walifault">Walifault</option>
 		</select>
+		<h3>Select a version theme:</h3>
+		<select id="Theme" class="dropdown">
+			<option>-- Choose one --</option>
+			<option value="precision">precision beta_0.3.1</option>
+			<option value="indev">Indev</option>
+			<option value="alpha">Alpha</option>
+			<option value="beta">Beta</option>
+			<option value="1.0-1.4">1.0 - 1.4</option>
+			<option value="1.5">1.5</option>
+			<option value="1.6-1.12">1.6 - 1.12</option>
+			<option value="1.13">1.13 Update Aquatic</option>
+			<option value="1.14">1.14 Village and Pillage</option>
+			<option value="1.15">1.15 Buzzy Bees</option>
+			<option value="1.16">1.16 The Nether Update</option>
+			<option value="1.17">1.17 Caves & Cliffs Part I</option>
+			<option value="1.18">1.18 Caves & Cliffs Part II</option>
+			<option value="1.19">1.19 The Wild Update</option>
+			<option value="1.20">1.20 Trails & Tales</option>
+		</select>
 		<br /><br />
 		<input class="starter" type="button" value="Launch" onclick="Start();" />
 	</div>
@@ -81,6 +100,7 @@
 		if (document.location.href.startsWith("file:")) {
 			alert("You cannot 'open' this file in your browser, the code doesn't work. Upload this folder to your HTTP(s) server and access it via the internet to launch the stable-download game. This is not a bug, please read the documentation.");
 		} else {
+			var ThemeSelect = document.getElementById("Theme");
 			var PackSelect = document.getElementById("Packs");
 			function Start() {
 				if (PackSelect.selectedIndex !== 0) {
@@ -88,67 +108,74 @@
 					document.getElementById("Selection").style.display = "none";
 					localStorage.LastPack = Selected;
 					const relayId = Math.floor(Math.random() * 3);
-					window.eaglercraftOpts = {
-						container: "game_frame",
-						assetsURI: `packs/${Selected}.epk`,
-						serverWorkerURI: "worker_bootstrap.js",
-						worldsFolder: "MAIN",
-						assetOverrides: {
-							"records/wait.mp3": "assetoverrides/wait.mp3",
-							"records/mellohi.mp3": "assetoverrides/mellohi.mp3",
-							"records/far.mp3": "assetoverrides/far.mp3",
-							"records/cat.mp3": "assetoverrides/cat.mp3",
-							"records/ward.mp3": "assetoverrides/ward.mp3",
-							"records/strad.mp3": "assetoverrides/strad.mp3",
-							"records/blocks.mp3": "assetoverrides/blocks.mp3",
-							"records/13.mp3": "assetoverrides/13.mp3",
-							"records/stal.mp3": "assetoverrides/stal.mp3",
-							"records/mall.mp3": "assetoverrides/mall.mp3",
-							"records/chirp.mp3": "assetoverrides/chirp.mp3",
-							"records/11.mp3": "assetoverrides/11.mp3",
-							//idk
-							"credits.txt": "assetoverrides/credits.txt",
-							"precision/gui.png": "assetoverrides/precision/gui.png",
-							"precision/gui2.png": "assetoverrides/precision/gui2.png",
-							"precision/guismall.png": "assetoverrides/precision/guismall.png",
-							"precision/logo.png": "assetoverrides/precision/logo.png",
-							"precision/precision.png": "assetoverrides/precision/precision.png",
-							"precision/precision2.png": "assetoverrides/precision/precision2.png",
-							"lang/en_US.lang": "assetoverrides/lang/en_US.lang",
-							"gui/demo_bg.png": "assetoverrides/gui/demo_bg.png",
-							"title/bg/panorama0.png": "assetoverrides/title/bg/panorama_0.png",
-							"title/bg/panorama1.png": "assetoverrides/title/bg/panorama_1.png",
-							"title/bg/panorama2.png": "assetoverrides/title/bg/panorama_2.png",
-							"title/bg/panorama3.png": "assetoverrides/title/bg/panorama_3.png",
-							"title/bg/panorama4.png": "assetoverrides/title/bg/panorama_4.png",
-							"title/bg/panorama5.png": "assetoverrides/title/bg/panorama_5.png"
-						},
-						servers: [
-							{ serverName: "A*spixel", serverAddress: "wss://web.asspixel.net/CAPixel/", hideAddress: true },
-							{ serverName: "VanillaCraft", serverAddress: "wss://play.vanillacraftsmp.org/", hideAddress: true },
-							{ serverName: "ArchMC", serverAddress: "wss://web.arch.lol/join", hideAddress: true },
-							{ serverName: "Ayunboom", serverAddress: "wss://sus.shhnowisnottheti.me", hideAddress: true },
-							{ serverName: "Aeon Network", serverAddress: "wss://aeon-network.net/aeon", hideAddress: true },
-							{ serverName: "Sealcraft", serverAddress: "wss://sealcraft.ddns.net:442/servers", hideAddress: true }
-						],
-						relays: [
-							{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
-							{ addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2", primary: relayId == 1 },
-							{ addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1", primary: relayId == 2 }
-						],
-						mainMenu: {
-							splashes: [], eaglerLogo: false
-						}
-					};
-					(function () {
-						var q = window.location.search;
-						if (typeof q === 'string' && q.startsWith("?")) {
-							q = new URLSearchParams(q);
-							var s = q.get("server");
-							if (s) window.minecraftOpts.push(s);
-						}
-					})();
-					main();
+					if (ThemeSelect.selectedIndex !== 0) {
+						var ThemeSelected = ThemeSelect.options[ThemeSelect.selectedIndex].value;
+						document.getElementById("Selection").style.display = "none";
+						localStorage.LastTheme = ThemeSelected;
+						const relayId = Math.floor(Math.random() * 3);
+						window.eaglercraftOpts = {
+							container: "game_frame",
+							assetsURI: `packs/${Selected}.epk`,
+							serverWorkerURI: "worker_bootstrap.js",
+							worldsFolder: "MAIN",
+							assetOverrides: {
+								"records/wait.mp3": "assetoverrides/wait.mp3",
+								"records/mellohi.mp3": "assetoverrides/mellohi.mp3",
+								"records/far.mp3": "assetoverrides/far.mp3",
+								"records/cat.mp3": "assetoverrides/cat.mp3",
+								"records/ward.mp3": "assetoverrides/ward.mp3",
+								"records/strad.mp3": "assetoverrides/strad.mp3",
+								"records/blocks.mp3": "assetoverrides/blocks.mp3",
+								"records/13.mp3": "assetoverrides/13.mp3",
+								"records/stal.mp3": "assetoverrides/stal.mp3",
+								"records/mall.mp3": "assetoverrides/mall.mp3",
+								"records/chirp.mp3": "assetoverrides/chirp.mp3",
+								"records/11.mp3": "assetoverrides/11.mp3",
+								//idk
+								"credits.txt": "assetoverrides/credits.txt",
+								"precision/gui.png": "assetoverrides/precision/gui.png",
+								"precision/gui2.png": "assetoverrides/precision/gui2.png",
+								"precision/guismall.png": "assetoverrides/precision/guismall.png",
+								"precision/logo.png": "assetoverrides/precision/logo.png",
+								"precision/precision.png": "assetoverrides/precision/precision.png",
+								"precision/precision2.png": "assetoverrides/precision/precision2.png",
+								"lang/en_US.lang": "assetoverrides/lang/en_US.lang",
+								"gui/demo_bg.png": "assetoverrides/gui/demo_bg.png",
+								"title/bg/panorama0.png": `assetoverrides/title/bg/${ThemeSelected} panorama_0.png`,
+								"title/bg/panorama1.png": `assetoverrides/title/bg/${ThemeSelected} panorama_1.png`,
+								"title/bg/panorama2.png": `assetoverrides/title/bg/${ThemeSelected} panorama_2.png`,
+								"title/bg/panorama3.png": `assetoverrides/title/bg/${ThemeSelected} panorama_3.png`,
+								"title/bg/panorama4.png": `assetoverrides/title/bg/${ThemeSelected} panorama_4.png`,
+								"title/bg/panorama5.png": `assetoverrides/title/bg/${ThemeSelected} panorama_5.png`
+							},
+							servers: [
+								{ serverName: "A*spixel", serverAddress: "wss://web.asspixel.net/CAPixel/", hideAddress: true },
+								{ serverName: "VanillaCraft", serverAddress: "wss://play.vanillacraftsmp.org/", hideAddress: true },
+								{ serverName: "ArchMC", serverAddress: "wss://web.arch.lol/join", hideAddress: true },
+								{ serverName: "Ayunboom", serverAddress: "wss://sus.shhnowisnottheti.me", hideAddress: true },
+								{ serverName: "Aeon Network", serverAddress: "wss://aeon-network.net/aeon", hideAddress: true },
+								{ serverName: "Sealcraft", serverAddress: "wss://sealcraft.ddns.net:442/servers", hideAddress: true }
+							],
+							relays: [
+								{ addr: "wss://relay.deev.is/", name: "lax1dude relay #1", primary: relayId == 0 },
+								{ addr: "wss://relay.lax1dude.net/", name: "lax1dude relay #2", primary: relayId == 1 },
+								{ addr: "wss://relay.shhnowisnottheti.me/", name: "ayunami relay #1", primary: relayId == 2 }
+							],
+							mainMenu: {
+								splashes: [], eaglerLogo: false
+							}
+						};
+						(function () {
+							var q = window.location.search;
+							if (typeof q === 'string' && q.startsWith("?")) {
+								q = new URLSearchParams(q);
+								var s = q.get("server");
+								if (s) window.minecraftOpts.push(s);
+							}
+						})();
+						main();
+					} else
+						alert("You need to select a theme");
 				} else
 					alert("You need to select a pack");
 			}
