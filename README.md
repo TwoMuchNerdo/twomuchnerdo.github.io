@@ -10,3 +10,7 @@ _
  
  Use the discussions tab if you guys have any questions
 
+ # I'm also working on a clone of Spaceflight Simulator!
+
+ Updates will come within the coming weeks/months
+
