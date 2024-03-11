@@ -17,3 +17,9 @@
     background-color: rgba(191, 173, 228, 0.300);
     color:rgb(233, 220, 232);
 }
+
+.main-block {
+    margin: auto;
+    text-align: center;
+    width: 500px;
+}
